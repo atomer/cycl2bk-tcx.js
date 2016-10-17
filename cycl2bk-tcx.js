@@ -55,6 +55,7 @@ var parseXML = function(data) {
 new Promise(function(resolve, reject) {
     glob(dir + "*.tcx", null, function(err, files) {
         if (err) {
+            reject(err);
         } else {
             resolve(files);
         }
@@ -95,10 +96,10 @@ new Promise(function(resolve, reject) {
         });
         return Promise.all(a);
     }, function(err) {
-        console.log(err);
+        console.error(err);
     })
     .then(function() {
-        console.log("complete");
+        console.error("complete");
     }, function(err) {
-        console.log(err);
+        console.error(err);
     });
